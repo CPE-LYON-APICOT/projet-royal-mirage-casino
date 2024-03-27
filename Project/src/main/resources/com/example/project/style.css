@@ -1,0 +1,46 @@
+.background {
+    -fx-background-color: rgb(12, 99, 57);
+}
+
+.flowpanel {
+    -fx-border-color: rgb(255,215,0);
+    -fx-border-width: 4;
+}
+
+.menu-button {
+    -fx-background-color: linear-gradient(#fdd05b, #f9b427);
+    -fx-border-color: #f9b427;
+    -fx-border-width: 1px;
+    -fx-padding: 5px 10px;
+    -fx-text-fill: black;
+    -fx-font-family: "Arial Black", serif;
+    -fx-font-weight: bold;
+}
+
+.menu-button:hover {
+    -fx-background-color: linear-gradient(#f9b427, #fdd05b);
+}
+
+.mise{
+    -fx-font-family: "Arial Black", serif;
+}
+
+.casino-button {
+    -fx-background-color: #000060;
+    -fx-border-color: #000080;
+    -fx-border-width: 1px;
+    -fx-border-radius: 0;
+    -fx-padding: 10px 20px;
+    -fx-text-fill: white;
+    -fx-font-family: Roboto, sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+.casino-button:hover {
+    -fx-background-color: #000080;
+}
+
+.casino-button:pressed {
+    -fx-background-color: #000050;
+}
