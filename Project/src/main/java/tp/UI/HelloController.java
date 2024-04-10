@@ -1,4 +1,4 @@
-package tp;
+package tp.UI;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

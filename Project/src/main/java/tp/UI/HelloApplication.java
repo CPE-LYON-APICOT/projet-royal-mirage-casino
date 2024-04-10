@@ -1,8 +1,6 @@
-package tp;
+package tp.UI;
 
 import tp.Models.BlackJack;
-import tp.Models.Joueur;
-import tp.interfaces.TirerPaquetImpl;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
