@@ -1,5 +1,6 @@
 package tp.UI;
 
+import tp.Controllers.GraphicsController;
 import tp.Models.BlackJack;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -7,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
+import tp.Models.Personne;
 
 import java.io.IOException;
 
@@ -22,10 +24,13 @@ public class HelloApplication extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         var context = new AnnotationConfigApplicationContext(HelloApplication.class);
 
-        var blackJack = context.getBean(BlackJack.class);
-        blackJack.start();
+        /*Personne joueur = context.getBean(Personne.class);
+        GameGraphics gameGraphics = context.getBean(GameGraphics.class);*/
+        //var blackJack = context.getBean(BlackJack.class);
+        GraphicsController graphicsController = context.getBean(GraphicsController.class);
+        //GameGraphics.main(null);/
     }
 }

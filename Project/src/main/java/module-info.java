@@ -1,16 +1,16 @@
-module com.example.project {
+module com.example.tp.UI {
     requires javafx.controls;
     requires javafx.fxml;
 
     requires com.dlsc.formsfx;
     requires spring.context;
 
-    opens com.example.tp to javafx.fxml;
     exports tp;
     exports tp.Models;
     exports tp.interfaces;
     exports tp.Enum;
     exports tp.strategies;
+    exports tp.Singleton;
     exports tp.UI;
     opens tp to javafx.fxml;
     opens tp.UI to javafx.fxml;

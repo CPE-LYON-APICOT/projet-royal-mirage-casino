@@ -9,6 +9,9 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import tp.Models.BlackJack;
+import tp.Models.Croupier;
+import tp.Models.Joueur;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,8 +29,7 @@ public class GameGraphics extends Application {
         stage.show();
 
         AnchorPane anchorPane = (AnchorPane) scene.lookup("#AnchorPaneCroupier");
-        String currentPath = System.getProperty("user.dir");
-        System.out.println(currentPath);
+
 
 
         /*// Créez l'objet Image. Remplacez "path/to/image.png" par le chemin réel de votre image.
@@ -59,6 +61,7 @@ public class GameGraphics extends Application {
         jetons.add(betTen);
         jetons.add(betTwentyFive);
         jetons.add(betHundred);
+
         // (Jeton)scene.lookup("toto");
 
         // Images cartes croupier

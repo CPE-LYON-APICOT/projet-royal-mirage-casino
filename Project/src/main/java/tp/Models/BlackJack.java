@@ -1,6 +1,7 @@
 package tp.Models;
 
 import org.springframework.stereotype.Component;
+import tp.Singleton.JoueurSingleton;
 import tp.interfaces.TirerPaquetImpl;
 import tp.strategies.DistributionStrategie;
 
@@ -12,9 +13,9 @@ public class BlackJack {
     private final Joueur joueur;
     private final Croupier croupier;
 
-    public BlackJack(Joueur joueur, Paquet paquet, Croupier croupier){
+    public BlackJack(Paquet paquet, Croupier croupier){
         this.deck = paquet;
-        this.joueur = joueur;
+        this.joueur = JoueurSingleton.getInstance();
         this.croupier = croupier;
     }
 
