@@ -1,4 +1,11 @@
-package Models;
+package tp.Models;
+
+import org.springframework.context.ApplicationContext;
+import tp.interfaces.IDistributionStrategie;
+import tp.interfaces.ITirerPaquet;
+import tp.interfaces.TirerPaquetImpl;
+import tp.strategies.DistributionStrategie;
+import tp.strategies.DistributionStrategieTriche;
 
 import java.util.Scanner;
 
@@ -6,21 +13,24 @@ public class Partie {
 
     private Joueur joueur;
     private Croupier croupier;
-    private Paquet paquet;
+    private IDistributionStrategie distributionStrategie;
+    //private Paquet paquet;
     private boolean hasWon = false;
     private boolean isOver = false;
     private boolean hit = false;
-
-    public Partie(Joueur joueur, Croupier croupier, Paquet paquet){
+    private TirerPaquetImpl tirerPaquet;
+    public Partie(Joueur joueur, Croupier croupier, IDistributionStrategie distributionStrategie){
         this.joueur = joueur;
+        //this.distributionStrategie = ctx.getBean(DistributionStrategieTriche.class);
         this.croupier = croupier;
-        this.paquet = paquet;
+        this.distributionStrategie = distributionStrategie;
     }
 
     public boolean jouer() {
-        croupier.ajouterCarte(paquet.tirerCarte());
-        joueur.ajouterCarte(paquet.tirerCarte());
-        joueur.ajouterCarte(paquet.tirerCarte());
+        this.tirerPaquet.tirerCarte(croupier);
+        this.tirerPaquet.tirerCarte(joueur);
+        this.tirerPaquet.tirerCarte(joueur);
+
         joueur.printMain();
         croupier.printMain();
 
@@ -29,7 +39,7 @@ public class Partie {
         int hitInt = keyboard.nextInt();
 
         while (hitInt == 1 && joueur.getMainValeur() < 21) {
-            joueur.ajouterCarte(paquet.tirerCarte());
+            this.tirerPaquet.tirerCarte(joueur);
             joueur.printMain();
             if (joueur.getMainValeur() > 21) {
                 System.out.println("Vous avez dépassé 21!");
@@ -40,7 +50,7 @@ public class Partie {
         }
 
         while (croupier.getMainValeur() < 16) {
-            croupier.ajouterCarte(paquet.tirerCarte());
+            this.tirerPaquet.tirerCarte(croupier);
             croupier.printMain();
         }
         if (croupier.getMainValeur() > 21) {

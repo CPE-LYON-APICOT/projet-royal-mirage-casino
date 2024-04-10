@@ -1,4 +1,4 @@
-package Enum;
+package tp.Enum;
 
 public enum Figures {
     AS, DEUX, TROIS, QUATRE, CINQ, SIX, SEPT, HUIT, NEUF, DIX, VALET, DAME, ROI;

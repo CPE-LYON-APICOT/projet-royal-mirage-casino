@@ -1,10 +1,11 @@
-package Models;
+package tp.Models;
 
-import interfaces.Miser;
+import org.springframework.stereotype.Component;
+import tp.interfaces.Miser;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Component
 public abstract class Personne implements Miser {
     private List<Carte> main;
 

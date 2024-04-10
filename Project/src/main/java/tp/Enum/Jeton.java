@@ -1,4 +1,4 @@
-package Enum;
+package tp.Enum;
 
 public enum Jeton {
 

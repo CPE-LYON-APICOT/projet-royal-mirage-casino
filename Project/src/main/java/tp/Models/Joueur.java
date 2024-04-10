@@ -1,5 +1,8 @@
-package Models;
+package tp.Models;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Joueur extends Personne{
     private int solde;
 

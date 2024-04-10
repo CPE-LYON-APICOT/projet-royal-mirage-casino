@@ -1,6 +1,9 @@
-package Models;
+package tp.Models;
 
-public class Croupier extends Personne{
+import org.springframework.stereotype.Component;
+
+@Component
+public class Croupier extends Personne {
 
     @Override
     public void printMain() {
