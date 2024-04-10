@@ -27,27 +27,27 @@
       <Button layoutX="187.0" layoutY="630.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="64.0" text="Bet 30" />
       <ImageView fitHeight="169.0" fitWidth="121.0" layoutX="457.0" layoutY="615.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../java/Images/as-trefle.png" />
+            <Image url="@Images/as-trefle.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="179.0" fitWidth="121.0" layoutX="594.0" layoutY="615.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../java/Images/as-coeur.png" />
+            <Image url="@Images/as-coeur.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="169.0" fitWidth="121.0" layoutX="738.0" layoutY="614.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../java/Images/as-pique.png" />
+            <Image url="@Images/as-pique.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="169.0" fitWidth="121.0" layoutX="878.0" layoutY="615.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../java/Images/as-carreau.png" />
+            <Image url="@Images/as-carreau.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="174.0" fitWidth="121.0" layoutX="318.0" layoutY="614.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../java/Images/as-carreau.png" />
+            <Image url="@Images/as-carreau.png" />
          </image>
       </ImageView>
    </children>

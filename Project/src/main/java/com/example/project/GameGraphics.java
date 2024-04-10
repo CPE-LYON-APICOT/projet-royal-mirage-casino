@@ -29,7 +29,7 @@ public class GameGraphics extends Application {
         AnchorPane anchorPane = (AnchorPane) scene.lookup("#AnchorPane");
         String currentPath = System.getProperty("user.dir");
         System.out.println(currentPath);
-        Image img = new Image("file:".concat(currentPath.concat("\\src\\main\\resources\\Images\\card.png")));
+        Image img = new Image("file:".concat(currentPath.concat("Images/card.png")));
         ImageView imageView = new ImageView(img);
         imageView.setLayoutX(100);
         imageView.setLayoutY(50);
