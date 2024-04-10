@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" mouseTransparent="true" prefHeight="458.0" prefWidth="524.0" spacing="20.0" styleClass="background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tp.HelloController">
+<VBox alignment="CENTER" mouseTransparent="true" prefHeight="458.0" prefWidth="524.0" spacing="20.0" styleClass="background" stylesheets="@../../../tp/UI/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tp.UI.HelloController">
   <padding>
     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
   </padding>
@@ -15,6 +15,6 @@
       </children>
    </TextFlow>
 
-  <Label fx:id="welcomeText" prefHeight="18.0" prefWidth="154.0" stylesheets="@style.css" text="Jouer" />
+  <Label fx:id="welcomeText" prefHeight="18.0" prefWidth="154.0" stylesheets="@../../../tp/UI/style.css" text="Jouer" />
   <Button onAction="#onHelloButtonClick" text="Lancer une partie" />
 </VBox>
