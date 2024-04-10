@@ -1,22 +1,21 @@
-package Models;
+package tp.Models;
 
-import com.example.project.GameGraphics;
+import org.springframework.stereotype.Component;
+import tp.interfaces.TirerPaquetImpl;
+import tp.strategies.DistributionStrategie;
 
 import java.util.Scanner;
-
+@Component
 public class BlackJack {
 
     private final Paquet deck;
     private final Joueur joueur;
     private final Croupier croupier;
 
-    public BlackJack(Joueur joueur){
-        this.deck = new Paquet();
+    public BlackJack(Joueur joueur, Paquet paquet, Croupier croupier){
+        this.deck = paquet;
         this.joueur = joueur;
-        this.croupier = new Croupier();
-
-        GameGraphics gameGraphics = new GameGraphics();
-        gameGraphics.main(null);
+        this.croupier = croupier;
     }
 
     public void start(){
@@ -27,7 +26,7 @@ public class BlackJack {
             System.out.println("Solde: " + joueur.getSolde());
             System.out.println("Combien voulez-vous miser ?");
             int mise = keyboard.nextInt();
-            boolean hasWon = new Partie(joueur, croupier, deck).jouer();
+            boolean hasWon = new Partie(joueur, croupier, new DistributionStrategie(new TirerPaquetImpl(deck), joueur, croupier)).jouer();
             this.deck.reset();
             this.joueur.mainReset();
             this.croupier.mainReset();
