@@ -1,5 +1,7 @@
 package Models;
 
+import com.example.project.GameGraphics;
+
 import java.util.Scanner;
 
 public class BlackJack {
@@ -12,6 +14,9 @@ public class BlackJack {
         this.deck = new Paquet();
         this.joueur = joueur;
         this.croupier = new Croupier();
+
+        GameGraphics gameGraphics = new GameGraphics();
+        gameGraphics.main(null);
     }
 
     public void start(){

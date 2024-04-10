@@ -34,7 +34,7 @@ public class GameGraphics extends Application {
         System.out.println(currentPath);
 
 
-        // Créez l'objet Image. Remplacez "path/to/image.png" par le chemin réel de votre image.
+        /*// Créez l'objet Image. Remplacez "path/to/image.png" par le chemin réel de votre image.
         // Si l'image est dans les ressources du projet, utilisez getClass().getResource("/path/to/image.png").toString()
         Image img = new Image(Objects.requireNonNull(getClass().getResourceAsStream("Images/card.png")));
 
@@ -48,7 +48,7 @@ public class GameGraphics extends Application {
         imageView.setFitHeight(150); // Hauteur de l'image
 
         // Ajoutez l'ImageView à l'AnchorPane
-        anchorPane.getChildren().add(imageView);
+        anchorPane.getChildren().add(imageView);*/
 
         stage.show();
         Button btnValidBet = (Button) scene.lookup("#validBet");
@@ -140,6 +140,4 @@ public class GameGraphics extends Application {
     public static void main(String[] args) {
         launch();
     }
-
-
 }
