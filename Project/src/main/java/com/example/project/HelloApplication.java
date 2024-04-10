@@ -26,5 +26,8 @@ public class HelloApplication extends Application {
         Joueur joueur = new Joueur();
         BlackJack blackJack = new BlackJack(joueur);
         blackJack.start();
+/*
+        GameGraphics.start();
+*/
     }
 }
