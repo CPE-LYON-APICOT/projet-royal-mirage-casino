@@ -1,16 +1,18 @@
-package com.example.project;
+package tp;
 
-import Models.BlackJack;
-import Models.Croupier;
-import Models.Joueur;
-import Models.Personne;
+import tp.Models.BlackJack;
+import tp.Models.Joueur;
+import tp.interfaces.TirerPaquetImpl;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 
 import java.io.IOException;
 
+@ComponentScan("tp")
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
@@ -23,8 +25,9 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) {
-        Joueur joueur = new Joueur();
-        BlackJack blackJack = new BlackJack(joueur);
+        var context = new AnnotationConfigApplicationContext(HelloApplication.class);
+
+        var blackJack = context.getBean(BlackJack.class);
         blackJack.start();
     }
 }

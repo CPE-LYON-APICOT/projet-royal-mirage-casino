@@ -1,10 +1,12 @@
-package Models;
+package tp.Models;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import Enum.Types;
+import tp.Enum.Types;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Paquet {
     private List<Carte> cartes;
 

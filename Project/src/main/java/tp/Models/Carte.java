@@ -1,7 +1,8 @@
-package Models;
+package tp.Models;
 
-import Enum.Types;
-import Enum.Figures;
+import org.springframework.stereotype.Component;
+import tp.Enum.Types;
+import tp.Enum.Figures;
 
 public class Carte {
     private int valeur;
