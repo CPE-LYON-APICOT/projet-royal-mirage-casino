@@ -19,7 +19,8 @@ public class Partie {
     private boolean isOver = false;
     private boolean hit = false;
     private TirerPaquetImpl tirerPaquet;
-    public Partie(Joueur joueur, Croupier croupier, IDistributionStrategie distributionStrategie){
+
+    public Partie(Joueur joueur, Croupier croupier, DistributionStrategie distributionStrategie) {
         this.joueur = joueur;
         //this.distributionStrategie = ctx.getBean(DistributionStrategieTriche.class);
         this.croupier = croupier;
@@ -27,38 +28,8 @@ public class Partie {
     }
 
     public boolean jouer() {
-        this.tirerPaquet.tirerCarte(croupier);
-        this.tirerPaquet.tirerCarte(joueur);
-        this.tirerPaquet.tirerCarte(joueur);
+        distributionStrategie.Distribuer();
 
-        joueur.printMain();
-        croupier.printMain();
-
-        Scanner keyboard = new Scanner(System.in);
-        System.out.println("1: Hit, 2: Stand");
-        int hitInt = keyboard.nextInt();
-
-        while (hitInt == 1 && joueur.getMainValeur() < 21) {
-            this.tirerPaquet.tirerCarte(joueur);
-            joueur.printMain();
-            if (joueur.getMainValeur() > 21) {
-                System.out.println("Vous avez dépassé 21!");
-                return false;
-            }
-            System.out.println("1: Hit, 2: Stand");
-            hitInt = keyboard.nextInt();
-        }
-
-        while (croupier.getMainValeur() < 16) {
-            this.tirerPaquet.tirerCarte(croupier);
-            croupier.printMain();
-        }
-        if (croupier.getMainValeur() > 21) {
-            return false;
-        }
-        System.out.println("Mains finales: ");
-        System.out.println("\t-Joueur: " + joueur.getMainValeur()); // Notez le '+' pour la concaténation
-        System.out.println("\t-Croupier: " + croupier.getMainValeur());
         return joueur.getMainValeur() > croupier.getMainValeur() && joueur.getMainValeur() <= 21;
     }
 }

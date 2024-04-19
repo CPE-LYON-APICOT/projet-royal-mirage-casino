@@ -1,6 +1,6 @@
 package tp.Enum;
 public enum Types {
-    PIQUE, COEUR, CARREAU, TREFLE;
+    pique, coeur, carreau, trefle;
 
     public static Types getType(int index) {
         return Types.values()[index];

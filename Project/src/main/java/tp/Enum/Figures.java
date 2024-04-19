@@ -1,7 +1,7 @@
 package tp.Enum;
 
 public enum Figures {
-    AS, DEUX, TROIS, QUATRE, CINQ, SIX, SEPT, HUIT, NEUF, DIX, VALET, DAME, ROI;
+    as, deux, trois, quatre, cinq, six, sept, huit, neuf, dix, valet, dame, roi;
 
     public static Figures getFigure(int index) {
         return Figures.values()[index];

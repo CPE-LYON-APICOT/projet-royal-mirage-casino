@@ -27,13 +27,8 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) throws IOException {
-       // var context = new AnnotationConfigApplicationContext(HelloApplication.class);
 
-        /*Personne joueur = context.getBean(Personne.class);
-        GameGraphics gameGraphics = context.getBean(GameGraphics.class);*/
-        //var blackJack = context.getBean(BlackJack.class);
        launch();
 
-        //GameGraphics.main(null);/
     }
 }

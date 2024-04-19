@@ -6,8 +6,8 @@ import tp.Enum.Figures;
 
 public class Carte {
     private int valeur;
-    private Types type;
-    private Figures figure;
+    private final Types type;
+    private final Figures figure;
 
     public Carte(int valeur, Types type){
 
@@ -28,5 +28,9 @@ public class Carte {
     public String toString(){
         System.out.println(this.figure + " de " + this.type + " avec une valeure de " + this.valeur);
         return "";
+    }
+
+    public String imageSrc() {
+        return "/tp/UI/Images/" + this.figure + "-" + this.type + ".png";
     }
 }

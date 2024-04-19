@@ -19,6 +19,14 @@ public class BlackJack {
         this.croupier = croupier;
     }
 
+    public void play(){
+        this.deck.reset();
+        this.joueur.mainReset();
+        this.croupier.mainReset();
+        Partie partie = new Partie(joueur, croupier, new DistributionStrategie(new TirerPaquetImpl(deck), joueur, croupier));
+        partie.jouer();
+    }
+
     public void start() {
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Lancer une partie ? 1. Oui 2. Non");

@@ -29,6 +29,10 @@ public class Joueur extends Personne{
         return value;
     }
 
+    public int getBetSum(){
+        return this.betSum;
+    }
+
     @Override
     public void printMain() {
         System.out.println("Main du joueur: ");

@@ -21,6 +21,10 @@ public abstract class Personne implements Miser {
         return main.stream().mapToInt(Carte::getValeur).sum();
     }
 
+    public List<Carte> getMain(){
+        return this.main;
+    }
+
     public void printMain(){
         for (Carte carte : main) {
             System.out.println(carte);
