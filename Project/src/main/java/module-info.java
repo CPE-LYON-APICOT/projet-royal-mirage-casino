@@ -12,6 +12,8 @@ module com.example.tp.UI {
     exports tp.strategies;
     exports tp.Singleton;
     exports tp.UI;
+    exports tp.Controllers;
     opens tp to javafx.fxml;
+    opens tp.Controllers to javafx.fxml;
     opens tp.UI to javafx.fxml;
 }

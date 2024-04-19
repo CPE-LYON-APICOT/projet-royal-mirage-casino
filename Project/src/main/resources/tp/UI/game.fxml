@@ -5,85 +5,92 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" maxWidth="700.0" prefHeight="800" prefWidth="1080" styleClass="background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tp.UI.GameGraphics">
-   <children>
-      <AnchorPane id="AnchorPaneCroupier" maxWidth="1000.0" prefHeight="600" prefWidth="1075" styleClass="flowpanel">
-         <MenuButton alignment="TOP_RIGHT" layoutX="967.0" layoutY="14.0" maxWidth="1000.0" mnemonicParsing="false"
-                     styleClass="menu-button" text="MenuButton">
-            <items>
-               <MenuItem mnemonicParsing="false" text="Action 1"/>
-               <MenuItem mnemonicParsing="false" text="Action 2"/>
-            </items>
-         </MenuButton>
-         <Button id="validBet" layoutX="25.0" layoutY="546.0" mnemonicParsing="false" prefHeight="39.0"
-                 prefWidth="292.0" styleClass="casino-button" text="Commencer la partie"/>
-         <Label layoutX="967.0" layoutY="560.0" prefHeight="18.0" prefWidth="98.0" styleClass="mise" text="Mise : "
-                textFill="WHITE">
-            <font>
-               <Font size="17.0"/>
-            </font>
-         </Label>
-         <ImageView id="croupierCard1" fitHeight="169.0" fitWidth="121.0" layoutX="251.0" layoutY="216.0"
-                    pickOnBounds="true" preserveRatio="true"/>
-         <ImageView id="croupierCard2" fitHeight="169.0" fitWidth="121.0" layoutX="406.0" layoutY="216.0"
-                    pickOnBounds="true" preserveRatio="true"/>
-         <ImageView id="croupierCard3" fitHeight="169.0" fitWidth="121.0" layoutX="552.0" layoutY="216.0"
-                    pickOnBounds="true" preserveRatio="true"/>
-         <ImageView id="croupierCard4" fitHeight="169.0" fitWidth="121.0" layoutX="691.0" layoutY="216.0"
-                    pickOnBounds="true" preserveRatio="true"/>
-         <ImageView id="croupierCard5" fitHeight="169.0" fitWidth="119.0" layoutX="828.0" layoutY="216.0"
-                    pickOnBounds="true" preserveRatio="true"/>
-         <ImageView fitHeight="169.0" fitWidth="121.0" layoutX="105.0" layoutY="216.0" pickOnBounds="true"
-                    preserveRatio="true">
-            <image>
-               <Image url="@Images/card.png"/>
-            </image>
-         </ImageView>
-      </AnchorPane>
-      <ImageView id="playerCard2" fitHeight="169.0" fitWidth="121.0" layoutX="457.0" layoutY="615.0" pickOnBounds="true" preserveRatio="true">
+<AnchorPane id="AnchorPane" maxWidth="700.0" prefHeight="800" prefWidth="1080" styleClass="background"
+            stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="tp.Controllers.GraphicsController">
+   <AnchorPane id="AnchorPaneCroupier" maxWidth="1000.0" prefHeight="600" prefWidth="1075" styleClass="flowpanel">
+      <MenuButton alignment="TOP_RIGHT" layoutX="967.0" layoutY="14.0" maxWidth="1000.0" mnemonicParsing="false"
+                  styleClass="menu-button" text="MenuButton">
+         <items>
+            <MenuItem mnemonicParsing="false" text="Action 1"/>
+            <MenuItem mnemonicParsing="false" text="Action 2"/>
+         </items>
+      </MenuButton>
+      <Button id="validBet" layoutX="25.0" layoutY="546.0" mnemonicParsing="false" prefHeight="39.0"
+              prefWidth="292.0" styleClass="casino-button" text="Commencer la partie"/>
+      <Label layoutX="967.0" layoutY="560.0" prefHeight="18.0" prefWidth="98.0" styleClass="mise" text="Mise : "
+             textFill="WHITE">
+         <font>
+            <Font size="17.0"/>
+         </font>
+      </Label>
+      <ImageView fx:id="croupierCard1" fitHeight="169.0" fitWidth="121.0" layoutX="251.0" layoutY="216.0"
+                 pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="croupierCard2" fitHeight="169.0" fitWidth="121.0" layoutX="406.0" layoutY="216.0"
+                 pickOnBounds="true" preserveRatio="true"/>
+      <ImageView fx:id="croupierCard3" fitHeight="169.0" fitWidth="121.0" layoutX="552.0" layoutY="216.0"
+                 pickOnBounds="true" preserveRatio="true"/>
+      <ImageView fx:id="croupierCard4" fitHeight="169.0" fitWidth="121.0" layoutX="691.0" layoutY="216.0"
+                 pickOnBounds="true" preserveRatio="true"/>
+      <ImageView fx:id="croupierCard5" fitHeight="169.0" fitWidth="119.0" layoutX="828.0" layoutY="216.0"
+                 pickOnBounds="true" preserveRatio="true"/>
+      <ImageView fitHeight="169.0" fitWidth="121.0" layoutX="105.0" layoutY="216.0" pickOnBounds="true"
+                 preserveRatio="true">
          <image>
-            <Image url="@Images/as-trefle.png" />
+            <Image url="@Images/card.png"/>
          </image>
       </ImageView>
-      <ImageView id="playerCard3" fitHeight="179.0" fitWidth="121.0" layoutX="594.0" layoutY="615.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/as-coeur.png" />
-         </image>
-      </ImageView>
-      <ImageView id="playerCard4" fitHeight="169.0" fitWidth="121.0" layoutX="733.0" layoutY="616.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/as-pique.png" />
-         </image>
-      </ImageView>
-      <ImageView id="playerCard5" fitHeight="169.0" fitWidth="121.0" layoutX="868.0" layoutY="614.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/as-carreau.png" />
-         </image>
-      </ImageView>
-      <ImageView id="playerCard1" fitHeight="174.0" fitWidth="121.0" layoutX="318.0" layoutY="614.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/as-carreau.png" />
-         </image>
-      </ImageView>
-      <ImageView id="betFive" fitHeight="87.0" fitWidth="98.0" layoutX="70.0" layoutY="607.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/jeton-red.png" />
-         </image>
-      </ImageView>
-      <ImageView id="betTen" fitHeight="87.0" fitWidth="87.0" layoutX="181.0" layoutY="607.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/jeton-blue.png" />
-         </image>
-      </ImageView>
-      <ImageView id="betTwentyFive" fitHeight="87.0" fitWidth="87.0" layoutX="70.0" layoutY="704.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/jeton-green.png" />
-         </image>
-      </ImageView>
-      <ImageView id="betHundred" fitHeight="87.0" fitWidth="87.0" layoutX="181.0" layoutY="704.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/jeton-black.png" />
-         </image>
-      </ImageView>
-   </children>
+   </AnchorPane>
+   <ImageView fx:id="joueurCard2" fitHeight="169.0" fitWidth="121.0" layoutX="457.0" layoutY="615.0" pickOnBounds="true"
+              preserveRatio="true">
+      <image>
+         <Image url="@Images/as-trefle.png"/>
+      </image>
+   </ImageView>
+   <ImageView fx:id="joueurCard3" fitHeight="179.0" fitWidth="121.0" layoutX="594.0" layoutY="615.0" pickOnBounds="true"
+              preserveRatio="true">
+      <Image url="@Images/as-coeur.png"/>
+   </ImageView>
+   <ImageView fx:id="joueurCard4" fitHeight="169.0" fitWidth="121.0" layoutX="733.0" layoutY="616.0" pickOnBounds="true"
+              preserveRatio="true">
+      <image>
+         <Image url="@Images/as-pique.png"/>
+      </image>
+   </ImageView>
+   <ImageView fx:id="joueurCard5" fitHeight="169.0" fitWidth="121.0" layoutX="868.0" layoutY="614.0" pickOnBounds="true"
+              preserveRatio="true">
+      <image>
+         <Image url="@Images/as-carreau.png"/>
+      </image>
+   </ImageView>
+   <ImageView fx:id="joueurCard1" fitHeight="174.0" fitWidth="121.0" layoutX="318.0" layoutY="614.0" pickOnBounds="true"
+              preserveRatio="true">
+      <image>
+         <Image url="@Images/as-carreau.png"/>
+      </image>
+   </ImageView>
+   <ImageView fx:id="betFive" fitHeight="87.0" fitWidth="98.0" layoutX="70.0" layoutY="607.0" pickOnBounds="true"
+              preserveRatio="true">
+      <image>
+         <Image url="@Images/jeton-red.png"/>
+      </image>
+   </ImageView>
+   <ImageView fx:id="betTen" fitHeight="87.0" fitWidth="87.0" layoutX="181.0" layoutY="607.0" pickOnBounds="true"
+              preserveRatio="true" >
+      <image>
+         <Image url="@Images/jeton-blue.png"/>
+      </image>
+   </ImageView>
+   <ImageView fx:id="betTwentyFive" fitHeight="87.0" fitWidth="87.0" layoutX="70.0" layoutY="704.0" pickOnBounds="true"
+              preserveRatio="true">
+      <image>
+         <Image url="@Images/jeton-green.png"/>
+      </image>
+   </ImageView>
+   <ImageView fx:id="betHundred" fitHeight="87.0" fitWidth="87.0" layoutX="181.0" layoutY="704.0" pickOnBounds="true"
+              preserveRatio="true">
+      <image>
+         <Image url="@Images/jeton-black.png"/>
+      </image>
+   </ImageView>
 </AnchorPane>

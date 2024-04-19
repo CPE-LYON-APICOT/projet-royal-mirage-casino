@@ -19,7 +19,7 @@ public class BlackJack {
         this.croupier = croupier;
     }
 
-    public void start(){
+    public void start() {
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Lancer une partie ? 1. Oui 2. Non");
         int play =  keyboard.nextInt();

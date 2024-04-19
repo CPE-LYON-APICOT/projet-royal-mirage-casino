@@ -1,7 +1,9 @@
 package tp.interfaces;
 
+import org.springframework.stereotype.Component;
 import tp.Models.Personne;
 
+@Component
 public class TirerPaquetImplTricheDecorator implements ITirerPaquet {
     private ITirerPaquet tirerPaquet;
     public TirerPaquetImplTricheDecorator(ITirerPaquet tirerPaquet) {

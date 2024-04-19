@@ -3,40 +3,61 @@ package tp.Controllers;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import org.springframework.stereotype.Component;
 import tp.Models.BlackJack;
 import tp.UI.GameGraphics;
 import tp.UI.HelloApplication;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class GraphicsController extends Application {
+@Component
+public class GraphicsController implements Initializable {
     List<ImageView> jetons = new ArrayList<ImageView>();
     List<ImageView> cartesCroupier = new ArrayList<ImageView>();
     List<ImageView> cartesJoueur = new ArrayList<ImageView>();
+    @FXML
     ImageView betFive;
+    @FXML
     ImageView betTen;
+    @FXML
     ImageView betTwentyFive;
+    @FXML
     ImageView betHundred ;
+    @FXML
     ImageView croupierCard1;
+    @FXML
     ImageView croupierCard2;
+    @FXML
     ImageView croupierCard3;
+    @FXML
     ImageView croupierCard4;
+    @FXML
     ImageView croupierCard5;
 
+    @FXML
     ImageView joueurCard1;
+    @FXML
     ImageView joueurCard2;
+    @FXML
     ImageView joueurCard3;
+    @FXML
     ImageView joueurCard4;
+    @FXML
     ImageView joueurCard5;
+    @FXML
     Button btnValidBet;
-    Scene scene;
+
 
     private final BlackJack blackJack;
 
@@ -44,25 +65,22 @@ public class GraphicsController extends Application {
 
     public GraphicsController(BlackJack blackJack){
         this.blackJack = blackJack;
-        launch();
+        System.out.println("GraphicsController constructor");
+
     }
 
 
 
-    @Override
+    //@Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("game.fxml"));
-        scene = new Scene(fxmlLoader.load(), 1110, 800);
-        /*scene.getStylesheets().add("style.css");*/
-        stage.setTitle("Casino Royale Mirage - Blackjack");
-        stage.setScene(scene);
-        stage.show();
-        instanciateButtons();
+        System.out.println("GraphicsController start");
+
 
         betFive.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(javafx.scene.input.MouseEvent mouseEvent) {
                 blackJack.getJoueur().bet(5);
+                System.out.println("betFive cliqué !");
             }
         });
 
@@ -98,21 +116,12 @@ public class GraphicsController extends Application {
 
     private void instanciateButtons(){
         /* Bet Buttons */
-        betFive = (ImageView) scene.lookup("#betFive");
-        betTen = (ImageView) scene.lookup("#betTen");
-        betTwentyFive = (ImageView) scene.lookup("#betTwentyFive");
-        betHundred = (ImageView) scene.lookup("#betHundred");
+
         jetons.add(betFive);
         jetons.add(betTen);
         jetons.add(betTwentyFive);
         jetons.add(betHundred);
 
-        /* Croupier Cards */
-        croupierCard1 = (ImageView) scene.lookup("#croupierCard1");
-        croupierCard2 = (ImageView) scene.lookup("#croupierCard2");
-        croupierCard3 = (ImageView) scene.lookup("#croupierCard3");
-        croupierCard4 = (ImageView) scene.lookup("#croupierCard4");
-        croupierCard5 = (ImageView) scene.lookup("#croupierCard5");
         cartesCroupier.add(croupierCard1);
         cartesCroupier.add(croupierCard2);
         cartesCroupier.add(croupierCard3);
@@ -120,11 +129,6 @@ public class GraphicsController extends Application {
         cartesCroupier.add(croupierCard5);
 
         /* Player Cards */
-        joueurCard1 = (ImageView) scene.lookup("#playerCard1");
-        joueurCard2 = (ImageView) scene.lookup("#playerCard2");
-        joueurCard3 = (ImageView) scene.lookup("#playerCard3");
-        joueurCard4 = (ImageView) scene.lookup("#playerCard4");
-        joueurCard5 = (ImageView) scene.lookup("#playerCard5");
         cartesJoueur.add(joueurCard1);
         cartesJoueur.add(joueurCard2);
         cartesJoueur.add(joueurCard3);
@@ -132,8 +136,19 @@ public class GraphicsController extends Application {
         cartesJoueur.add(joueurCard5);
 
         /* Bet Button */
-        btnValidBet = (Button) scene.lookup("#validBet");
     }
 
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+       // instanciateButtons();
+
+        betFive.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(javafx.scene.input.MouseEvent mouseEvent) {
+                blackJack.getJoueur().bet(5);
+                System.out.println("betFive cliqué !");
+            }
+        });
+    }
 }
