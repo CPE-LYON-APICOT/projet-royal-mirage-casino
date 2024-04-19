@@ -46,5 +46,15 @@ public class BlackJack {
         }
     }
 
+    public Paquet getDeck() {
+        return deck;
+    }
 
+    public Joueur getJoueur() {
+        return joueur;
+    }
+
+    public Croupier getCroupier() {
+        return croupier;
+    }
 }

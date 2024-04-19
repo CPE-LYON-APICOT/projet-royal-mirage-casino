@@ -1,10 +1,13 @@
 package tp.Controllers;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import tp.Models.BlackJack;
 import tp.UI.GameGraphics;
@@ -35,13 +38,16 @@ public class GraphicsController extends Application {
     Button btnValidBet;
     Scene scene;
 
-    private BlackJack blackJack;
+    private final BlackJack blackJack;
+
 
 
     public GraphicsController(BlackJack blackJack){
         this.blackJack = blackJack;
         launch();
     }
+
+
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -52,6 +58,42 @@ public class GraphicsController extends Application {
         stage.setScene(scene);
         stage.show();
         instanciateButtons();
+
+        betFive.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(javafx.scene.input.MouseEvent mouseEvent) {
+                blackJack.getJoueur().bet(5);
+            }
+        });
+
+
+        betTen.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
+            @Override
+            public void handle(javafx.scene.input.MouseEvent mouseEvent) {
+                blackJack.getJoueur().bet(10);
+            }
+        });
+
+        betTwentyFive.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
+            @Override
+            public void handle(javafx.scene.input.MouseEvent mouseEvent) {
+                blackJack.getJoueur().bet(25);
+            }
+        });
+
+        betHundred.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
+            @Override
+            public void handle(javafx.scene.input.MouseEvent mouseEvent) {
+                blackJack.getJoueur().bet(100);
+            }
+        });
+
+        btnValidBet.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                System.out.println("Salut le monde !");
+            }
+        });
     }
 
     private void instanciateButtons(){
@@ -92,4 +134,6 @@ public class GraphicsController extends Application {
         /* Bet Button */
         btnValidBet = (Button) scene.lookup("#validBet");
     }
+
+
 }
