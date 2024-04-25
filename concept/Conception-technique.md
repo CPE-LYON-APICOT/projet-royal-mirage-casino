@@ -1,8 +1,8 @@
 
 # Retro-conception
 
-**Binome 1 : [Nom Prénom]**
-**Binome 2 : [Nom Prénom]**
+**Binome 1 : [BOUVIER Gaston]**
+**Binome 2 : [ADAM Emilien]**
 
 Complétez ce document pour décrire votre projet, les difficultés rencontrées, les design patterns mis en oeuvre, les améliorations possibles, et en quoi la POO vous a été utile.
 
@@ -28,15 +28,15 @@ Dans ces documents, il ne s'agit pas de cacher la poussière sous le tapis, il f
 
 ## Objectif du projet
 
-[Décrivez ici l'objectif initial du projet, ne cherchez pas à le minorer si vous n'avez pas tout fini, décrivez ce que vous avez voulu faire]
+Notre but etait de mettre en place avec un jeu de Blackjack, mais avec une conception qui permettait d'implementer d'autres jeux de casino (Poker, Roulette...).
 
 ## Résultat
 
-[Avez vous atteint votre objectif ?]
+Nous avons pu mettre en place le jeu de Blackjack avec les mises du joueur. Cependant, il manque les aspects permettant une implementation simple des autres jeux. 
 
 ### Améliorations possibles
 
-[Décrivez ici les améliorations que vous auriez pu apporter si vous aviez eu plus de temps]
+Mises en place d'animation, gestion plus propre du fil du jeu et de l'architecture global et mise en place d'un autre jeu
 
 ---
 # Partie "Développeur" (plus technique) :
@@ -48,13 +48,18 @@ Dans ces documents, il ne s'agit pas de cacher la poussière sous le tapis, il f
 
 ### Faiblesses du code
 
-[C'est ici que vous me dites ce que vous savez que vous avez mal fait, expliquez pourquoi vous avez fait ce choix (manque de temps, manque de compétence, trop pénible à faire, etc.)]
+Nous avons des parties reutilisables pour d'autre jeux, mais pas toutes. Par exemple, la classe croupier ou cartes peuvent etre facilement reutilisees dans les autres jeux avec leur methodes. Mais les mises par exemple, ne sont pour l'instant pas reutilisable.
+De plus, notre maitrise de JFX etant limitee, la gestion du controller est assez brouillon et complexe avec beaucoup de code dedans.
 
 ### Difficultés rencontrées
 
 #### 1. [Génération dynamique des ... pour ...]
 
-[Expliquez ici la difficulté rencontrée et comment vous l'avez contournée]
+Gestion de l'interface dynamique. Pour corriger cela, nous avons utilise des listes d'elements grapgiques pour pouvoir interagir avec toute la page selon les evenements et les interactions des utilisateurs.
+
+Instaciation des classes aux bons moments. Nous avions des problemes sur quelles classes etaient instanciees quand, selon quand la fenetre se lance, si la partie commance ect... Nous avonc utilises des injections de dependances pour les crees dans le controller pour les recuperer.
+
+Nombreux problemes sur JFX, resolution de bugs basique.
 
 #### 2. [Gestion des collisions]
 
@@ -63,26 +68,56 @@ Dans ces documents, il ne s'agit pas de cacher la poussière sous le tapis, il f
 
 ### *Design Patterns* mis en oeuvre
 
-#### 1. [Factory]
-[Décrivez ici brièvement le design pattern utilisé et pourquoi]
-[Ajouter éventuellement des exemples de code pour montrer l'élégence de votre solution, pour cela vous pouvez écrire en Markdown votre code ainsi :
+#### 1. [Singleton]
+Nous avons mis en place un Singleton pour recuperer la seule instance du joueur (utilisateur):
 
-<pre>
+
 ```java
-public class Factory {
-    public static Object createObject(String type) {
-        if (type.equals("type1")) {
-            return new Type1();
-        } else if (type.equals("type2")) {
-            return new Type2();
+public class JoueurSingleton {
+    /*private static JoueurSingleton instance = null;*//**/
+    private static Joueur instance = null;
+    private int solde;
+
+    private JoueurSingleton(){
+        instance = new Joueur();
+    }
+
+    public static Joueur getInstance(){
+        if(instance == null){
+            instance = new Joueur();
         }
-        return null;
+        return instance;
     }
 }
 ```
-</pre>
 
-]
+#### 2. [Injection de dependances]
+On ecrit plus de new Class()...
+
+```java
+@Component
+public class BlackJack {
+
+    private final Paquet deck;
+    private final Joueur joueur;
+    private final Croupier croupier;
+
+    public BlackJack(Paquet paquet, Croupier croupier){
+        this.deck = paquet;
+        this.joueur = JoueurSingleton.getInstance();
+        this.croupier = croupier;
+    }
+```
+
+#### 3. [Strategies]
+Permet de redefinir la maniere dont on distribue les classes
+```java
+public interface IDistributionStrategie {
+    public void Distribuer();
+}
+```
+
+#### 4. [Strategies]
 
 ---
 # Partie pédagogique
