@@ -3,6 +3,7 @@ package tp.Models;
 import org.springframework.stereotype.Component;
 import tp.Singleton.JoueurSingleton;
 import tp.interfaces.TirerPaquetImpl;
+import tp.interfaces.TirerPaquetImplTricheDecorator;
 import tp.strategies.DistributionStrategie;
 
 import java.util.Scanner;
@@ -25,6 +26,16 @@ public class BlackJack {
         this.croupier.mainReset();
         Partie partie = new Partie(joueur, croupier, new DistributionStrategie(new TirerPaquetImpl(deck), joueur, croupier));
         partie.jouer();
+    }
+
+    public void playTriche(){
+        this.deck.reset();
+        this.joueur.mainReset();
+        this.croupier.mainReset();
+        /*
+        Partie partie = new Partie(joueur, croupier, new DistributionStrategie(new TirerPaquetImplTricheDecorator(deck), joueur, croupier));
+        partie.jouer();
+        */
     }
 
     public void start() {

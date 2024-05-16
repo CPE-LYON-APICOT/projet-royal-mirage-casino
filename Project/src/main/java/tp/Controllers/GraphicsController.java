@@ -1,25 +1,19 @@
 package tp.Controllers;
 
-import javafx.application.Application;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import org.springframework.stereotype.Component;
 import tp.Models.BlackJack;
 import tp.Models.Carte;
 import tp.Singleton.JoueurSingleton;
-import tp.UI.GameGraphics;
-import tp.UI.HelloApplication;
+import tp.interfaces.TirerPaquetImpl;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -31,9 +25,11 @@ import static java.lang.Thread.sleep;
 
 @Component
 public class GraphicsController implements Initializable {
-    List<ImageView> jetons = new ArrayList<ImageView>();
-    List<ImageView> cartesCroupier = new ArrayList<ImageView>();
-    List<ImageView> cartesJoueur = new ArrayList<ImageView>();
+    ArrayList<ImageView> jetons = new ArrayList<ImageView>();
+    ArrayList<ImageView> imagesMoins = new ArrayList<ImageView>();
+    ArrayList<ImageView> cartesCroupier = new ArrayList<ImageView>();
+    ArrayList<ImageView> cartesJoueur = new ArrayList<ImageView>();
+    private static String tappedText = "";
     @FXML
     ImageView betFive;
     @FXML
@@ -74,13 +70,32 @@ public class GraphicsController implements Initializable {
     Button validBet;
     @FXML
     Button buttonHit;
+
     @FXML
     Button buttonStand;
+    @FXML
+    Label soldeMessage;
+    @FXML
+    Label message;
+    @FXML
+    Button buttonRestart;
 
+    @FXML
+    ImageView moinsCinq;
+    @FXML
+    ImageView moinsDix;
+
+    @FXML
+    ImageView moinsVingtCinq;
+    @FXML
+    ImageView moinsCent;
+
+    TirerPaquetImpl tirerPaquet;
     private final BlackJack blackJack;
 
     public GraphicsController(BlackJack blackJack){
         this.blackJack = blackJack;
+        this.tirerPaquet = new TirerPaquetImpl(this.blackJack.getDeck());
     }
 
 
@@ -102,6 +117,11 @@ public class GraphicsController implements Initializable {
         cartesJoueur.add(joueurCard3);
         cartesJoueur.add(joueurCard4);
         cartesJoueur.add(joueurCard5);
+
+        imagesMoins.add(moinsCinq);
+        imagesMoins.add(moinsDix);
+        imagesMoins.add(moinsVingtCinq);
+        imagesMoins.add(moinsCent);
     }
 
 
@@ -118,9 +138,32 @@ public class GraphicsController implements Initializable {
                     soldeInsuffisant();
                 }
                 else{
+                    soldeSuffisant();
                     validBet.setDisable(false);
                     updateSolde();
                     updateBetLabel();
+                }
+            }
+        });
+
+        moinsCinq.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(javafx.scene.input.MouseEvent mouseEvent) {
+                if(blackJack.getJoueur().getBetSum() >= 5){
+                    blackJack.getJoueur().bet(-5);
+                    updateSolde();
+                    updateBetLabel();
+
+                    if(blackJack.getJoueur().getBetSum() == 0){
+                        validBet.setDisable(true);
+                    }
+                    else{
+                        validBet.setDisable(false);
+                    }
+                    soldeSuffisant();
+                }
+                else {
+                    soldeInsuffisant();
                 }
             }
         });
@@ -132,9 +175,32 @@ public class GraphicsController implements Initializable {
                 if (val == 0) {
                     soldeInsuffisant();
                 } else {
+                    soldeSuffisant();
                     validBet.setDisable(false);
                     updateSolde();
                     updateBetLabel();
+                }
+            }
+        });
+
+        moinsDix.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(javafx.scene.input.MouseEvent mouseEvent) {
+                if(blackJack.getJoueur().getBetSum() >= 10){
+                    blackJack.getJoueur().bet(-10);
+                    updateSolde();
+                    updateBetLabel();
+
+                    if(blackJack.getJoueur().getBetSum() == 0){
+                        validBet.setDisable(true);
+                    }
+                    else{
+                        validBet.setDisable(false);
+                    }
+                    soldeSuffisant();
+                }
+                else {
+                    soldeInsuffisant();
                 }
             }
         });
@@ -146,9 +212,32 @@ public class GraphicsController implements Initializable {
                 if (val == 0) {
                     soldeInsuffisant();
                 } else {
+                    soldeSuffisant();
                     validBet.setDisable(false);
                     updateSolde();
                     updateBetLabel();
+                }
+            }
+        });
+
+        moinsVingtCinq.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(javafx.scene.input.MouseEvent mouseEvent) {
+                if(blackJack.getJoueur().getBetSum() >= 25){
+                    blackJack.getJoueur().bet(-25);
+                    updateSolde();
+                    updateBetLabel();
+
+                    if(blackJack.getJoueur().getBetSum() == 0){
+                        validBet.setDisable(true);
+                    }
+                    else{
+                        validBet.setDisable(false);
+                    }
+                    soldeSuffisant();
+                }
+                else {
+                    soldeInsuffisant();
                 }
             }
         });
@@ -160,9 +249,32 @@ public class GraphicsController implements Initializable {
                 if (val == 0) {
                     soldeInsuffisant();
                 } else {
+                    soldeSuffisant();
                     validBet.setDisable(false);
                     updateSolde();
                     updateBetLabel();
+                }
+            }
+        });
+
+        moinsCent.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(javafx.scene.input.MouseEvent mouseEvent) {
+                if(blackJack.getJoueur().getBetSum() >= 100){
+                    blackJack.getJoueur().bet(-100);
+                    updateSolde();
+                    updateBetLabel();
+
+                    if(blackJack.getJoueur().getBetSum() == 0){
+                        validBet.setDisable(true);
+                    }
+                    else{
+                        validBet.setDisable(false);
+                    }
+                    soldeSuffisant();
+                }
+                else {
+                    soldeInsuffisant();
                 }
             }
         });
@@ -172,9 +284,11 @@ public class GraphicsController implements Initializable {
             public void handle(javafx.scene.input.MouseEvent mouseEvent) {
                 validBet.setDisable(true);
                 actionBetView(false);
+                moinsCent.setVisible(false);
+                soldeSuffisant();
 
                 blackJack.play();
-                List<Carte> cartes = blackJack.getJoueur().getMain();
+                ArrayList<Carte> cartes = blackJack.getJoueur().getMain();
                 setPlayerCards(cartes);
                 setDealerCards(blackJack.getCroupier().getMain());
                 mainVal.setText("Valeur main : " + blackJack.getJoueur().getMainValeur());
@@ -186,13 +300,89 @@ public class GraphicsController implements Initializable {
             }
         });
 
+        buttonStand.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(javafx.scene.input.MouseEvent mouseEvent) {
+                buttonStand.setDisable(true);
+                buttonHit.setDisable(true);
+
+                while (blackJack.getCroupier().getMainValeur() <= 16) {
+                    tirerPaquet.tirerCarte(blackJack.getCroupier());
+                }
+                setDealerCards(blackJack.getCroupier().getMain());
+
+                if (blackJack.getCroupier().getMainValeur() > 21) {
+                    endGame(true);
+                } else if (blackJack.getCroupier().getMainValeur() > blackJack.getJoueur().getMainValeur()) {
+                    endGame(false);
+                } else {
+                    endGame(true);
+                }
+            }
+        });
+
+        buttonHit.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(javafx.scene.input.MouseEvent mouseEvent) {
+                tirerPaquet.tirerCarte(blackJack.getJoueur());
+                setPlayerCards(blackJack.getJoueur().getMain());
+                if ( blackJack.getJoueur().getMainValeur() > 21) {
+                    endGame(false);
+                    System.out.println("Défaite votre score dépasse 21");
+                } else if (blackJack.getJoueur().getMainValeur() == 21) {
+                    endGame(true);
+                    System.out.println("Bravo vous avez 21");
+                }
+
+            }
+        });
+
+        buttonRestart.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(javafx.scene.input.MouseEvent mouseEvent) {
+                reset();
+            }
+        });
+
         updateSolde();
         updateBetLabel();
+    }
+
+    // crée un code de triche
+    public static void handleKeyPass(KeyCode code) {
+        if(code == KeyCode.T){
+            tappedText+="T";
+        }else if(code == KeyCode.R){
+            tappedText+="R";
+        }else if(code == KeyCode.I){
+            tappedText+="I";
+        }else if(code == KeyCode.C){
+            tappedText+="C";
+        }else if(code == KeyCode.H){
+            tappedText+="H";
+        }else if(code == KeyCode.E){
+            tappedText+="E";
+        }else{
+            tappedText = "";
+        }
+
+        if(tappedText.equals("TRICHE")){
+            triche();
+            tappedText = "";
+        }
+    }
+
+    public static void triche(){
+        JoueurSingleton.getInstance().addSolde(1000);
     }
 
     private void soldeInsuffisant(){
         //TODO: faire un evenement solde insuffisant
         labelWallet.setTextFill(javafx.scene.paint.Color.RED);
+    }
+
+    private void soldeSuffisant(){
+        labelWallet.setTextFill(javafx.scene.paint.Color.WHITE);
     }
 
     private void updateBetLabel(){
@@ -209,23 +399,94 @@ public class GraphicsController implements Initializable {
         for (ImageView element : jetons) {
             element.setVisible(bool);
         }
+        for (ImageView element : imagesMoins) {
+            element.setVisible(bool);
+        }
         validBet.setVisible(bool);
     }
 
-    private void setPlayerCards(List<Carte> main){
+    private void setPlayerCards(ArrayList<Carte> main){
         int compteurCarte = 0;
         for (Carte carte : main){
+            System.out.println(carte.toString());
             cartesJoueur.get(compteurCarte).setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream(carte.imageSrc()))));
             compteurCarte++;
         }
+        mainVal.setText("Valeur main : " + blackJack.getJoueur().getMainValeur());
     }
 
-    private void setDealerCards(List<Carte> main){
+    private void setDealerCards(ArrayList<Carte> main){
         int compteurCarte = 0;
         for (Carte carte : main){
+            System.out.println(carte.toString());
             cartesCroupier.get(compteurCarte).setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream(carte.imageSrc()))));
             compteurCarte++;
         }
+        croupierMainVal.setText("Main Croupier : " + blackJack.getCroupier().getMainValeur());
     }
+
+    private void resetAllCards(){
+
+        for (ImageView carte : cartesJoueur) {
+            carte.setImage(null);
+        }
+        for (ImageView carte : cartesCroupier) {
+            carte.setImage(null);
+        }
+    }
+
+    private void endGame(boolean status) {
+        if (status ) {
+            this.blackJack.getJoueur().setSolde(this.blackJack.getJoueur().getSolde() + this.blackJack.getJoueur().getBetSum() * 2);
+        }
+        //TOUT DESAC
+        buttonHit.setVisible(false);
+        buttonStand.setVisible(false);
+        buttonHit.setDisable(false);
+        buttonStand.setDisable(false);
+        //afficher le texte
+        if ( status ) {
+            message.setText("Vous avez gagné !");
+            soldeMessage.setText("+" + blackJack.getJoueur().getBetSum()*2 );
+            soldeMessage.setTextFill(javafx.scene.paint.Color.web("#f9b427"));
+        } else {
+            message.setText("Vous avez perdu !");
+            soldeMessage.setText("-" + blackJack.getJoueur().getBetSum() );
+            soldeMessage.setTextFill(javafx.scene.paint.Color.RED);
+        }
+        message.setVisible(true);
+        soldeMessage.setVisible(true);
+        buttonRestart.setVisible(true);
+        updateSolde();
+        updateBetLabel();
+        //TOUT REACTIVER
+    }
+
+    private void reset() {
+        //RESET LES DEUX MAINS
+        blackJack.getJoueur().mainReset();
+        blackJack.getJoueur().setBetSum(0);
+        blackJack.getCroupier().mainReset();
+        blackJack.getDeck().reset();
+
+        //RESET LE DECK
+        //RESET LAFFICHAGE DES MAINS
+        updateSolde();
+        updateBetLabel();
+        croupierMainVal.setVisible(false);
+        mainVal.setVisible(false);
+
+
+        // Remet les boutons pour parier
+        actionBetView(true);
+
+        message.setVisible(false);
+        soldeMessage.setVisible(false);
+        buttonRestart.setVisible(false);
+
+        resetAllCards();
+    }
+
+
 
 }

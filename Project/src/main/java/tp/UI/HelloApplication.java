@@ -19,16 +19,15 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("game.fxml"));
         fxmlLoader.setControllerFactory(new AnnotationConfigApplicationContext(HelloApplication.class)::getBean);
-        Scene scene = new Scene(fxmlLoader.load(), 1110, 800);
-        scene.getStylesheets().add("style.css");
+        Scene scene = new Scene(fxmlLoader.load(), 1000, 800);/*1110*/
+        /*scene.getStylesheets().add("style.css");*/
         stage.setTitle("Casino Royale Mirage - Blackjack");
+        scene.setOnKeyPressed(event -> {GraphicsController.handleKeyPass(event.getCode());});
         stage.setScene(scene);
         stage.show();
     }
 
     public static void main(String[] args) throws IOException {
-
        launch();
-
     }
 }

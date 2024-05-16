@@ -38,4 +38,8 @@ public class Joueur extends Personne{
         System.out.println("Main du joueur: ");
         super.printMain();
     }
+
+    public void addSolde(int solde){
+        this.solde += solde;
+    }
 }

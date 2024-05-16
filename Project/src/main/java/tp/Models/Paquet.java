@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Paquet {
-    private List<Carte> cartes;
+    private ArrayList<Carte> cartes;
 
     public Paquet () {
         this.cartes = new ArrayList<>();
