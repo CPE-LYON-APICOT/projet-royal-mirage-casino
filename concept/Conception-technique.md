@@ -28,15 +28,15 @@ Dans ces documents, il ne s'agit pas de cacher la poussière sous le tapis, il f
 
 ## Objectif du projet
 
-Notre but etait de mettre en place avec un jeu de Blackjack, mais avec une conception qui permettait d'implementer d'autres jeux de casino (Poker, Roulette...).
+Notre but etait de mettre en place avec un jeu de Blackjack, avec une conception qui permettait d'implementer d'autres jeux de casino (Poker, Roulette ...).
 
 ## Résultat
 
-Nous avons pu mettre en place le jeu de Blackjack avec les mises du joueur. Cependant, il manque les aspects permettant une implementation simple des autres jeux. 
+Nous avons pu mettre en place le jeu de Blackjack avec les mises du joueur. Cependant, il manque la ^partie qui permet de rajouter des pieces sur son solde et le menu qui permet de choisir le jeu auquel on souhaite jouer. 
 
 ### Améliorations possibles
 
-Mises en place d'animation, gestion plus propre du fil du jeu et de l'architecture global et mise en place d'un autre jeu
+Nous pourrions mettre en place des animations plus poussée des différentes actions. Mais aussi faire un menu de jeu qui pourrait nous permettre de sélectionner notre jeu et d'en faire d'autre dans un second temps. Ce menu contiendrai une page permettant de rajouter des pièces sur son solde.
 
 ---
 # Partie "Développeur" (plus technique) :
@@ -48,28 +48,25 @@ Mises en place d'animation, gestion plus propre du fil du jeu et de l'architectu
 
 ### Faiblesses du code
 
-Nous avons des parties reutilisables pour d'autre jeux, mais pas toutes. Par exemple, la classe croupier ou cartes peuvent etre facilement reutilisees dans les autres jeux avec leur methodes. Mais les mises par exemple, ne sont pour l'instant pas reutilisable.
-De plus, notre maitrise de JFX etant limitee, la gestion du controller est assez brouillon et complexe avec beaucoup de code dedans.
+Nous avons des parties reutilisables pour d'autres jeux, mais pas toutes. Par exemple, la classe  joueur ou cartes peuvent être facilement réutilisées dans les autres jeux avec leur methodes. Mais l'interface contient des méthodes qui sont spécifiques au jeu du black jack.
+La gestion du controller est mauvaise et complexe avec trop de code à l'intérieur, on aurait du mieux répartir le code en essayant de plus le factoriser.
 
 ### Difficultés rencontrées
 
-#### 1. [Génération dynamique des ... pour ...]
+#### 1. [Gestion de l'interface]
 
-Gestion de l'interface dynamique. Pour corriger cela, nous avons utilise des listes d'elements grapgiques pour pouvoir interagir avec toute la page selon les evenements et les interactions des utilisateurs.
+Nous avons rencontrés des difficultés lors de la gestion de l'interface dynamique.
+Gestion de l'interface dynamique. Pour corriger cela, nous avons utilise des listes d'elements graphiques pour pouvoir interagir avec toute la page selon les evenements et les interactions des utilisateurs.
 
-Instaciation des classes aux bons moments. Nous avions des problemes sur quelles classes etaient instanciees quand, selon quand la fenetre se lance, si la partie commance ect... Nous avonc utilises des injections de dependances pour les crees dans le controller pour les recuperer.
+#### 2. [Problemes dans l'ordre d'execution]
 
-Nombreux problemes sur JFX, resolution de bugs basique.
-
-#### 2. [Gestion des collisions]
-
-[Exemple : Nous n'avons pas réussi à gérer les collisions, PARCE QUE, mes objets n'héritaient pas d'une classe commune, car nos objets héirtaient de ... et nos personnages de ...]
+Nous avons eu des problemes car nous utilisions nos classes avant qu'elles soient completement instanciée et liées avec l'interface graphique. Nous avons eu le meme probleme avec des actions qui se faisaient avant ou après l'interface graphique.
 
 
 ### *Design Patterns* mis en oeuvre
 
 #### 1. [Singleton]
-Nous avons mis en place un Singleton pour recuperer la seule instance du joueur (utilisateur):
+Nous avons mis en place un Singleton pour recuperer la seule instance du joueur (utilisateur), ce Singleton sera utile pour les autres jeux et le menu. Le fait d'utiliser un Singleton nous a simplifié le code lors de l'utilisation de méthodes statiques (nécessaire pour l'interface graphique).
 
 
 ```java
@@ -92,7 +89,7 @@ public class JoueurSingleton {
 ```
 
 #### 2. [Injection de dependances]
-On ecrit plus de new Class()...
+Nous faisons de l'injection de dépendances lors de la création de notre BlackJack notamment (voir ci-dessous)
 
 ```java
 @Component
@@ -110,14 +107,46 @@ public class BlackJack {
 ```
 
 #### 3. [Strategies]
-Permet de redefinir la maniere dont on distribue les classes
+Permet de redefinir la maniere dont on distribue les cartes
 ```java
 public interface IDistributionStrategie {
     public void Distribuer();
 }
 ```
 
-#### 4. [Strategies]
+#### 4. [Observable]
+
+Notre observable suit les différentes actions sur le clavier, dès que le mot triche est tapé, l'action est appelé.
+Notre joueur aura ainsi 1000 pièces en plus.
+
+```java
+public static void handleKeyPass(KeyCode code) {
+        if(code == KeyCode.T){
+            tappedText+="T";
+        }else if(code == KeyCode.R){
+            tappedText+="R";
+        }else if(code == KeyCode.I){
+            tappedText+="I";
+        }else if(code == KeyCode.C){
+            tappedText+="C";
+        }else if(code == KeyCode.H){
+            tappedText+="H";
+        }else if(code == KeyCode.E){
+            tappedText+="E";
+        }else{
+            tappedText = "";
+        }
+
+        if(tappedText.equals("TRICHE")){
+            triche();
+            tappedText = "";
+        }
+    }
+
+    public static void triche(){
+        JoueurSingleton.getInstance().addSolde(1000);
+    }
+```
 
 ---
 # Partie pédagogique
@@ -125,9 +154,8 @@ public interface IDistributionStrategie {
 
 ### En quoi la POO vous a été utile
 
-[Par exemple, expliquez que vous auriez éprouvé des difficultés à gérer les collisions si vous n'aviez pas utilisé la POO, ou que vous avez pu facilement ajouter des fonctionnalités à votre jeu grâce à la POO
-Minimum 10 lignes (personnalisé en fonction de votre projet)]
+Dans notre application la POO est indispensable pour ne pas avoir à rééecrire notre code pour d'autres jeux sur la meme application (projet initial). Ici cela nous permet d'avoir un seul joueur pour tous les jeux qui a un solde et des informations qui lui sont propre. Les actions qu'il peut réaliser peuvent être faite dans tous les jeux comme miser par exemple. La POO permet la maintenabilité, c'est à dire que le code est divisé en pleins de petites parties qui sont donc plus facilement débuggable. La POO nous permet également de mettre en place de nouvelles règles ou différentes manieres de jouer avec les strategies notamment. Il est aussi plus simple de gérer l'interface graphique avec la POO avec l'utilisation des différentes classes et controlleurs. La POO permet de faciliter la collaboration pour coder, en effet le code etant structuré et plus visuel le travail en équipe est plus simple.
 
 ### Conclusion
 
-[Décrivez ici si vous avez compris un concept particulier que vous n'aviez pas compris en cours, inversement si vous pensiez qu'il était possible de faire qqchose mais que cela ne s'est pas passé comme prévu]
+Le projet nous a permit de redécouvrir la notion d'injection de dépendance et de l'utiliser de manière poussée, cela nous a facilité notre code en diminuant sa taille et en le rendant plus simple et compréhensible.

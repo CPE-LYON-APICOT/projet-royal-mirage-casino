@@ -7,21 +7,21 @@ import java.util.ArrayList;
 import java.util.List;
 @Component
 public abstract class Personne implements Miser {
-    private List<Carte> main;
+    private ArrayList<Carte> main;
 
     public Personne() {
         this.main = new ArrayList<>();
     }
 
     public void ajouterCarte(Carte carte) {
-        main.add(carte);
+        this.main.add(carte);
     }
 
     public int getMainValeur() {
         return main.stream().mapToInt(Carte::getValeur).sum();
     }
 
-    public List<Carte> getMain(){
+    public ArrayList<Carte> getMain(){
         return this.main;
     }
 
@@ -34,6 +34,11 @@ public abstract class Personne implements Miser {
     }
 
     public void mainReset() {
-        main.clear();
+        System.out.println("HAHAHAHAICI");
+        this.main.clear();
+        this.main = new ArrayList<>();
+        for (Carte carte : main) {
+            System.out.println(carte.toString());
+        }
     }
 }

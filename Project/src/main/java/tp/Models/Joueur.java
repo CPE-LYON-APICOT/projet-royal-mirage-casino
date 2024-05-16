@@ -29,6 +29,10 @@ public class Joueur extends Personne{
         return value;
     }
 
+    public void setBetSum(int sum) {
+        this.betSum = sum;
+    }
+
     public int getBetSum(){
         return this.betSum;
     }

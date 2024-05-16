@@ -4,14 +4,14 @@
 Montrez qu'il mobilise des techniques de POO avancée
 Comment allez-vous utiliser les patrons de conception ?
 
-Le but du projet est de mettre en place un jeu de BlackJack avec interface graphique.
+Le but du projet est de mettre en place un jeu de BlackJack avec interface graphique. Le jeu et la conception est faite de sorte que l'on puisse facilement réutiliser les méthodes et classes pour un autre jeu.
 
-Le jeu permettra de lancer une 
+Le jeu permettra de lancer : 
 
-Observable -> methodes qui observent le solde, si le solde change on fait un son de piece, si solde trop bas, solde en rouge
+Observable -> Méthode qui observe les touches du clavier et si le mot "triche" est tapé, on ajoute 1000 pieces au joueur 
 
 Decorateur -> partie truquee
 
-Singleton -> recupere le joueur et le croupier
+Singleton -> recupere le joueur
 
 Strategie -> facon de tirer les cartes
