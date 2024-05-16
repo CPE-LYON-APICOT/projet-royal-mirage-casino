@@ -28,11 +28,15 @@ Dans ces documents, il ne s'agit pas de cacher la poussière sous le tapis, il f
 
 ## Objectif du projet
 
-Notre but etait de mettre en place avec un jeu de Blackjack, avec une conception qui permettait d'implementer d'autres jeux de casino (Poker, Roulette ...).
+L'objectif principal de notre projet était de développer un jeu de Blackjack tout en adoptant une architecture flexible permettant l'ajout ultérieur d'autres jeux de casino tels que le Poker, la Roulette, et d'autres encore. Nous voulions créer une base solide et modulaire pour faciliter l'expansion future du logiciel, en intégrant des principes de conception robustes et en utilisant les meilleures pratiques de développement.
 
 ## Résultat
 
-Nous avons pu mettre en place le jeu de Blackjack avec les mises du joueur. Cependant, il manque la ^partie qui permet de rajouter des pieces sur son solde et le menu qui permet de choisir le jeu auquel on souhaite jouer. 
+Nous avons réussi à développer un jeu de Blackjack fonctionnel, y compris la gestion des mises du joueur. Le jeu permet une expérience utilisateur fluide et intègre les règles classiques du Blackjack. Cependant, malgré cette réussite, nous n'avons pas atteint notre objectif d'implémenter une structure facilitant l'ajout d'autres jeux de casino.
+
+En outre, notre progression a été ralentie par des retards dans le développement de l'interface graphique. Notre but etait de se concentrer en partie sur d'abord realiser un jeu fonctionnel en ligne de commande, afin d'avoir une base solide sur laquelle derriere construire l'interface graphique.
+Cependant, cela ne s'est pas avere tres utile, du fait que nous avons pratiquement du tout recommencer une fois l'interface graphique.
+L'interface graphique a egalement elle ete ralentie du fait d'une mauvaise comprehension de l'utilisation des differents elements de JFX.
 
 ### Améliorations possibles
 
@@ -44,7 +48,7 @@ Nous pourrions mettre en place des animations plus poussée des différentes act
 
 ### Implémentations remarquables
 
-[Si pendant votre implémentation, vous trouvez que vous pouvez être particulièrment fiers d'une partie de votre code, décrivez là ici ; par exemple si vous avez généré une carte de manière procédurale, ou à l'aide d'un fichier]
+L'ajout et la modification de cartes est simplifiée par la conception du projet, les cartes et les types sont listées dans un Enum. Il suffit donc de rajouter un item dans l'enum pour rajouter une carte. Nous pouvons également à tout moment mettre en place une nouvelle strategie de distribution dans le blackjack.
 
 ### Faiblesses du code
 
@@ -107,7 +111,7 @@ public class BlackJack {
 ```
 
 #### 3. [Strategies]
-Permet de redefinir la maniere dont on distribue les cartes
+Permet de redefinir la maniere dont on distribue les cartes. Cette stratégie a été mise en place dans le blackjack console mais n'est pas utilisable avec l'outil graphique.
 ```java
 public interface IDistributionStrategie {
     public void Distribuer();
