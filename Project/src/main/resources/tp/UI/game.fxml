@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxWidth="700.0" prefHeight="800" prefWidth="1080" styleClass="background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tp.Controllers.GraphicsController">
+   <AnchorPane id="AnchorPaneCroupier" maxWidth="1000.0" prefHeight="600" prefWidth="1075" styleClass="flowpanel">
+      <Button fx:id="validBet" layoutX="25.0" layoutY="546.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="292.0" styleClass="casino-button" text="Commencer la partie" />
+      <Label fx:id="labelBet" layoutX="7.0" layoutY="14.0" prefHeight="26.0" prefWidth="258.0" styleClass="mise" text="Mise : " textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelWallet" layoutX="7.0" layoutY="39.0" prefHeight="18.0" prefWidth="270.0" styleClass="mise" text="Solde : " textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="croupierCard1" fitHeight="169.0" fitWidth="121.0" layoutX="156.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="croupierCard2" fitHeight="169.0" fitWidth="121.0" layoutX="287.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="croupierCard3" fitHeight="169.0" fitWidth="121.0" layoutX="420.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="croupierCard4" fitHeight="169.0" fitWidth="121.0" layoutX="549.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="croupierCard5" fitHeight="169.0" fitWidth="119.0" layoutX="685.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="169.0" fitWidth="121.0" layoutX="25.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/card.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="buttonHit" layoutX="865.0" layoutY="500.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="121.0" styleClass="casino-button-action" text="HIT" visible="false" />
+      <Button fx:id="buttonStand" layoutX="865.0" layoutY="550.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="119.0" styleClass="casino-button-action" text="STAND" visible="false" />
+      <Label fx:id="message" layoutX="366.0" layoutY="65.0" prefHeight="50.0" prefWidth="349.0" text=" Vous avez gagné ! " textFill="WHITE" visible="false">
+         <font>
+            <Font size="33.0" />
+         </font>
+      </Label>
+      <Label fx:id="soldeMessage" layoutX="372.0" layoutY="123.0" prefHeight="32.0" prefWidth="96.0" text="+ X " textAlignment="CENTER" textFill="WHITE" visible="false">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Button fx:id="buttonRestart" layoutX="474.0" layoutY="119.0" mnemonicParsing="false" styleClass="casino-button" text="Relancer une partie" visible="false" />
+      <ImageView fx:id="croupierCard6" fitHeight="169.0" fitWidth="119.0" layoutX="818.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true" />
+   </AnchorPane>
+   <ImageView fx:id="joueurCard2" fitHeight="169.0" fitWidth="121.0" layoutX="320.0" layoutY="615.0" pickOnBounds="true" preserveRatio="true">
+
+   </ImageView>
+   <ImageView fx:id="joueurCard3" fitHeight="179.0" fitWidth="121.0" layoutX="457.0" layoutY="615.0" pickOnBounds="true" preserveRatio="true">
+   </ImageView>
+   <ImageView fx:id="joueurCard4" fitHeight="169.0" fitWidth="121.0" layoutX="596.0" layoutY="616.0" pickOnBounds="true" preserveRatio="true">
+   </ImageView>
+   <ImageView fx:id="joueurCard5" fitHeight="169.0" fitWidth="121.0" layoutX="731.0" layoutY="614.0" pickOnBounds="true" preserveRatio="true">
+   </ImageView>
+   <ImageView fx:id="joueurCard6" fitHeight="190.0" fitWidth="121.0" layoutX="865.0" layoutY="613.0" pickOnBounds="true" preserveRatio="true" />
+   <ImageView fx:id="joueurCard1" fitHeight="174.0" fitWidth="121.0" layoutX="181.0" layoutY="614.0" pickOnBounds="true" preserveRatio="true">
+
+   </ImageView>
+   <ImageView fx:id="betFive" fitHeight="87.0" fitWidth="98.0" layoutX="70.0" layoutY="607.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@Images/jeton-red.png" />
+      </image>
+   </ImageView>
+   <ImageView fx:id="betTen" fitHeight="87.0" fitWidth="87.0" layoutX="181.0" layoutY="607.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@Images/jeton-blue.png" />
+      </image>
+   </ImageView>
+   <ImageView fx:id="betTwentyFive" fitHeight="87.0" fitWidth="87.0" layoutX="70.0" layoutY="704.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@Images/jeton-green.png" />
+      </image>
+   </ImageView>
+   <ImageView fx:id="betHundred" fitHeight="87.0" fitWidth="87.0" layoutX="181.0" layoutY="704.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@Images/jeton-black.png" />
+      </image>
+   </ImageView>
+   <Label fx:id="mainVal" layoutX="14.0" layoutY="603.0" prefHeight="26.0" prefWidth="233.0" text="Main : " textFill="WHITE" visible="false">
+      <font>
+         <Font size="17.0" />
+      </font>
+   </Label>
+   <Label fx:id="croupierMainVal" layoutX="14.0" layoutY="642.0" prefHeight="26.0" prefWidth="285.0" text="Croupier main : " textFill="WHITE" visible="false">
+      <font>
+         <Font size="17.0" />
+      </font>
+   </Label>
+   <ImageView fx:id="moinsCinq" fitHeight="26.0" fitWidth="25.0" layoutX="64.0" layoutY="604.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@Images/moins.png" />
+      </image>
+   </ImageView>
+   <ImageView fx:id="moinsVingtCinq" fitHeight="26.0" fitWidth="25.0" layoutX="64.0" layoutY="696.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@Images/moins.png" />
+      </image>
+   </ImageView>
+   <ImageView fx:id="moinsCent" fitHeight="26.0" fitWidth="25.0" layoutX="175.0" layoutY="696.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@Images/moins.png" />
+      </image>
+   </ImageView>
+   <ImageView fx:id="moinsDix" fitHeight="26.0" fitWidth="25.0" layoutX="175.0" layoutY="604.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@Images/moins.png" />
+      </image>
+   </ImageView>
+</AnchorPane>

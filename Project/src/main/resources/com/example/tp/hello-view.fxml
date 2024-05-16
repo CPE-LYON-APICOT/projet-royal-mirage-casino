@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" mouseTransparent="true" prefHeight="458.0" prefWidth="524.0" spacing="20.0" styleClass="background" stylesheets="@../../../tp/UI/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tp.UI.HelloController">
+  <padding>
+    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+  </padding>
+   <TextFlow accessibleText="Royal mirage casino" prefHeight="271.0" prefWidth="484.0">
+      <children>
+         <Label alignment="CENTER" prefHeight="18.0" prefWidth="484.0" text="Royal Mirage casino" textAlignment="CENTER" />
+      </children>
+   </TextFlow>
+
+  <Label fx:id="welcomeText" prefHeight="18.0" prefWidth="154.0" stylesheets="@../../../tp/UI/style.css" text="Jouer" />
+  <Button onAction="#onHelloButtonClick" text="Lancer une partie" />
+</VBox>
